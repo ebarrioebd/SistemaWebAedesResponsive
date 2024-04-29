@@ -1,0 +1,128 @@
+/*Laptops*/
+@media (max-width: 768px) and (min-width: 300px) {
+	#sect01 {
+		display: none;
+	}
+
+	#sect02 {
+		width: 50%;
+	}
+
+	#sect03 {
+		width: 50%;
+	}
+
+	#head_main {
+		justify-content: center;
+	}
+
+	#center_main {
+		display: inline;
+	}
+
+	#sect12 {
+		height: 59vh;
+		width: 100% !important;
+	}
+
+	#sect13 {
+		margin-left: 3%;
+		height: 59vh;
+		width: 45% !important;
+		float: left;
+	}
+
+	#sect14 {
+		height: 59vh;
+		margin-left: 53% !important;
+		width: 45% !important;
+		float: unset;
+	}
+
+	#foot_main {
+		display: inline;
+	}
+
+	#sect2 {
+		height: -webkit-fill-available;
+		width: 100% !important;
+		margin-bottom: 1%;
+	}
+	#filecsv {
+		display: block;
+		width: 98%;
+		height: 510px;
+		position: fixed;
+		top: 1%;
+		left: 1%;
+		/* margin-top: -200px; */
+		/* margin-left: -300px; */
+		height: 99vh;
+		border: outset #fffefe 5px;
+		background: #444444;
+	}
+	/*css filecsv interpolar*/
+	#nomColInter{
+		display: grid;
+		height: 20% !important;
+		justify-items: center;
+	}
+	#muestra_button_v_interpolar > button{
+		width: 24% !important;
+	}
+	#muestra_button_v_interpolar{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+	#contendCSV{
+		height: 75% !important;
+	}
+	/*semivariograma_config*/
+	.semivariograma_config{
+		height: 80%;
+		overflow: scroll;
+		display: flex;
+		padding: 23px;
+		flex-wrap: wrap;
+		justify-content: center;
+		width: 100%;
+	}
+	.config_modelo{
+		width: auto !important;
+		padding-right: 0px !important;
+	}
+	#grafdiv > canvas {
+		background: white;  
+	}
+	#grafdiv{
+		height: auto !important;
+		padding-top: 20px;
+		background: none;
+	}
+	/* Graficas de Validadvion cruzada*/
+	.config_graficas_validacion{
+		width: 100%;
+	}
+	.contenido_validacion{
+		overflow: scroll;
+		height: 90% !important;
+		display: flex ;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+#muestra_button_v_interpolar > button{
+	width: auto;
+}
+#muestra_button_v_interpolar > button:hover{
+	background: #ffddbe;
+}
+#muestra_button_v_interpolar{
+	display: flex;
+	flex-wrap: wrap; 
+}
+/*Tablet*/
+@media (max-width: 499px) and (min-width: 100px) {}
+
+/*Moviles*/
