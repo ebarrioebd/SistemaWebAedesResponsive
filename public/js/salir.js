@@ -1,6 +1,6 @@
 var bPreguntar = true;
 
-//window.onbeforeunload = preguntarAntesDeSalir;
+window.onbeforeunload = preguntarAntesDeSalir;
 
 function preguntarAntesDeSalir() {
     var respuesta;
