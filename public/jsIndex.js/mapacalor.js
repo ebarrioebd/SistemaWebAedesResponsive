@@ -356,6 +356,8 @@ function cancelar_interpolacion() {
 
 function interpolar(metodo) {
     document.getElementById("ventana_seleccionar_p").style.display = "none"
+    //reinicia Porcentaje de interpolcaion en div ventana  
+    document.getElementById("porcentajeInterpolar").innerHTML = "";
     document.getElementById("progressInter").value = 0 //reinicira progreso
 
     document.getElementById("interpolarCSV").style.display = "";
@@ -412,7 +414,8 @@ function interpolar(metodo) {
                     document.getElementById("divProgressInterpolar").style.display = "none"
                     ////
                 } else if (event.data.type == "progress") {
-                    document.getElementById("progressInter").value = parseInt(event.data.p)
+                    document.getElementById("porcentajeInterpolar").innerHTML = (parseInt(event.data.p)+1) + "%";
+                    document.getElementById("progressInter").value =  parseInt(event.data.p)+1
                 }
 
                 ////
@@ -424,7 +427,7 @@ function interpolar(metodo) {
 
     } else if (metodo === "idw") {
         metodo_aplicado = metodo
-        document.getElementById("divProgressInterpolar").style.display = ""
+        document.getElementById("divProgressInterpolar").style.display = "";
         //document.getElementById("imgLoading").style.display = "";
         //creamos el worker
         //remplace//console.log("dat_semivariograma:;", dat_semivariograma)
@@ -470,7 +473,8 @@ function interpolar(metodo) {
                 document.getElementById("divProgressInterpolar").style.display = "none"
                 wk_idw.terminate();
             } else if (event.data.type == "progress") {
-                document.getElementById("progressInter").value = parseInt(event.data.p)
+                document.getElementById("porcentajeInterpolar").innerHTML = (parseInt(event.data.p)+1) + "%";
+                document.getElementById("progressInter").value =  parseInt(event.data.p)+1
             }
         }
 
@@ -573,18 +577,18 @@ function validacionCruzada(metodo_interpolador) {
             if (e.data.type == "result") {
                 //remplace//console.log("VCROSS:", e.data)
                 let error = e.data.error
-                let promedioError = promedio(error) 
+                let promedioError = promedio(error)
                 let ve = e.data.ve
                 let zv = e.data.zv
                 let correlacioDeV = calcularCorrelacion(zv, ve)
                 document.getElementById("errorpromedio").innerHTML = "Error medio: " + promedioError.toFixed(3)
-                document.getElementById("correlaciozv").innerHTML = "Correlación(VR,VE):" + correlacioDeV.toFixed(5) 
+                document.getElementById("correlaciozv").innerHTML = "Correlación(VR,VE):" + correlacioDeV.toFixed(5)
                 var dataP = createDP(zv, ve)
                 var a_xb = [] /// calcularRectaDeMejorAjuste(ve, zv)
                 let minve = Math.min(...ve);
                 let maxve = Math.max(...ve);
                 let minzv = Math.min(...zv);
-                let maxzv = Math.max(...zv); 
+                let maxzv = Math.max(...zv);
                 //crear puntos para crear la recta lineal
                 //----Editado :: var crearxy = crearXY(a_xb, Math.max(minve, minzv), Math.min(maxzv, maxve))  
                 //----Editado :: var xy_rect = createDP(crearxy[0], crearxy[1])
@@ -592,7 +596,7 @@ function validacionCruzada(metodo_interpolador) {
                 graf_vz.data.datasets[0].data = dataP;
                 const max_xy = Math.max(maxzv, maxve)
                 //--Editado :: graf_vz.data.datasets[1].data = xy_rect;
-                graf_vz.data.datasets[1].data = [{ x: 0, y: 0 }, { x: max_xy+10, y: max_xy+10 } ];
+                graf_vz.data.datasets[1].data = [{ x: 0, y: 0 }, { x: max_xy + 10, y: max_xy + 10 }];
                 [chart_error.data.labels, chart_error.data.datasets[0].data] = createDPX(error);
                 graf_vz.update();
                 chart_error.update()
@@ -721,11 +725,11 @@ function ir_url(n, c_id, type_dat, m_i) { //value
     groupCircleCSV.remove(); //remueve circulos de add
     let content_popupCSV = ``;
     for (var i = 0; i < ovitrampas.length; i++) { ///RADIO=(parseInt(ovitrampas[i].cantidad_huevos)*100)/(Est_Des_Data.data_max)
-        content_popupCSV =`
+        content_popupCSV = `
         <div class="popup">
         <div class="colonia"><strong> COLONIA ${nombreColonia} </strong><br><hr></div>
             <div class="coordenadas_title"><strong>COORDENADAS</strong> </div>
-            <div class="coordenadas">[${ ovitrampas[i].latitud },${ovitrampas[i].longitud}] </div> 
+            <div class="coordenadas">[${ovitrampas[i].latitud},${ovitrampas[i].longitud}] </div> 
             <div class="cantidad_title"> <strong>CANTIDAD DE HUEVOS</strong></div>
             <div class="cantidad">${ovitrampas[i].cantidad_huevos}</div>
         </div>
@@ -827,8 +831,8 @@ function generarValidacionCruzada_test() {
     for (var i = 0; i < 40; i++) {
         tableVC += `
     <tr>
-    <td>${parseInt(Math.random()*100)}</td>
-    <td>${parseInt(Math.random()*100)}</td>
+    <td>${parseInt(Math.random() * 100)}</td>
+    <td>${parseInt(Math.random() * 100)}</td>
     <td>${Math.random()}</td>
     </tr>
 `
